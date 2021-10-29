@@ -12,7 +12,12 @@ const Header = (title, date, temp) => {
   spanDate.textContent = date;
   h1.textContent = title;
   spanTemp.textContent = temp;
-  return div
+
+  div.appendChild(spanDate);
+  div.appendChild(h1);
+  div.appendChild(spanTemp);
+
+return div
   // TASK 1
   // ---------------------
   // Implement this function taking `title`, `date` and `temp` as its 3 args and returning the markup below.
@@ -27,7 +32,10 @@ const Header = (title, date, temp) => {
   //
 }
 
+const data = Header('Abbey', '2021', '71 degrees')
 const headerAppender = (selector) => {
+  const appendSpot = document.querySelector(selector);
+  appendSpot.appendChild(data);
   // TASK 2
   // ---------------------
   // Implement this function taking a css selector as its only argument.
