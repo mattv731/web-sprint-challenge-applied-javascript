@@ -4,10 +4,12 @@ const Card = (article) => {
 
   const img = document.createElement('img');
   img.setAttribute('src', article['authorPhoto']);
+  // console.log(article['authorPhoto'])
   const span = document.createElement('span');
-  span.textContent = `By ${authorName}`;
+  span.textContent = `By ${authorName} `;
 
   const authorName = article['authorName'];
+  console.log(authorName)
 
   const div = [];
   for (let i = 0; i < 4; i++){
@@ -22,8 +24,11 @@ const Card = (article) => {
   div[1].classList.add('headline');
   div[1].textContent = article['headline'];
 
-  div[2].classList.add('img-container');
-  div[2].appendChild(img);
+  div[2].classList.add('author');
+  div[2].appendChild(div[3]);
+
+  div[3].classList.add('img-container');
+  div[3].appendChild(img)
 
 return div[0]
   // TASK 5
@@ -48,10 +53,17 @@ return div[0]
 
 const cardAppender = (selector) => {
   const appendSpot = document.querySelector(selector);
-  axios.get('http://localhost:5000/api/articles')
+  axios.get(`http://localhost:5000/api/articles`)
+
   .then(response => {
-    const data = response.data.articles.javascript
-    appendSpot.appendChild(Card(data))
+    const information = response.data.articles
+    // const newArray = information.map(item, () =>
+    //   return information + item)
+    information.forEach(item =>
+      appendSpot.appendChild(Card(item)))
+    console.log(response.data.articles.javascript)
+    // appendSpot.appendChild(Card(response.data.articles))
+    // )
   })
   .catch(error =>
     console.log('error'))
