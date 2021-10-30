@@ -32,7 +32,7 @@ return div
   //
 }
 
-const data = Header('Abbey', '2021', '71 degrees')
+const data = Header('My newspaper', '2021', '71 degrees')
 const headerAppender = (selector) => {
   const appendSpot = document.querySelector(selector);
   appendSpot.appendChild(data);

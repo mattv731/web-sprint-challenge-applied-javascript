@@ -6,11 +6,10 @@ const Card = (article) => {
   img.setAttribute('src', article['authorPhoto']);
   // console.log(article['authorPhoto'])
   const span = document.createElement('span');
-  span.textContent = `By ${authorName} `;
 
   const authorName = article['authorName'];
-  console.log(authorName)
-
+  span.textContent = `By  ${authorName}`;
+  
   const div = [];
   for (let i = 0; i < 4; i++){
     div.push(document.createElement('div'));
@@ -56,14 +55,12 @@ const cardAppender = (selector) => {
   axios.get(`http://localhost:5000/api/articles`)
 
   .then(response => {
-    const information = response.data.articles
-    // const newArray = information.map(item, () =>
-    //   return information + item)
+    const information = response.data.articles.javascript
     information.forEach(item =>
-      appendSpot.appendChild(Card(item)))
-    console.log(response.data.articles.javascript)
+      appendSpot.appendChild(Card(item))
+    // console.log(response.data.articles.javascript)
     // appendSpot.appendChild(Card(response.data.articles))
-    // )
+    )
   })
   .catch(error =>
     console.log('error'))
