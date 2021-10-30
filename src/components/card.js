@@ -22,6 +22,9 @@ const Card = (article) => {
 
   div[1].classList.add('headline');
   div[1].textContent = article['headline'];
+  div[1].addEventListener('click', () => {
+    console.log(article['headline'])
+  })
 
   div[2].classList.add('author');
   div[2].appendChild(div[3]);
