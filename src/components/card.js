@@ -28,6 +28,7 @@ const Card = (article) => {
 
   div[2].classList.add('author');
   div[2].appendChild(div[3]);
+  div[2].appendChild(span);
 
   div[3].classList.add('img-container');
   div[3].appendChild(img)
