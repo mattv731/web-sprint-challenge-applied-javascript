@@ -60,18 +60,15 @@ const cardAppender = (selector) => {
 
   .then(response => {
     const information = [response.data.articles.bootstrap, response.data.articles.javascript, response.data.articles.jquery, response.data.articles.node, response.data.articles.technology];
-    // information.unshift(response.data.articles)
-    const data = information.map(item => {
-      return item.forEach(element => {
+    information.forEach(item => {
+      item.forEach(element => {
         appendSpot.appendChild(Card(element))
       })
     })
 
   })
-    // console.log(response.data.articles.javascript)
-    // appendSpot.appendChild(Card(response.data.articles))
   .catch(error =>
-    console.log('error'))
+    console.error('error'))
 }
   // TASK 6
   // ---------------------
