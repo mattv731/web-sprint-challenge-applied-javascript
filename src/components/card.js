@@ -1,10 +1,10 @@
 import axios from 'axios';
+// import { data } from 'msw/lib/types/context';
 
 const Card = (article) => {
 
   const img = document.createElement('img');
   img.setAttribute('src', article['authorPhoto']);
-  // console.log(article['authorPhoto'])
   const span = document.createElement('span');
 
   const authorName = article['authorName'];
@@ -59,13 +59,17 @@ const cardAppender = (selector) => {
   axios.get(`http://localhost:5000/api/articles`)
 
   .then(response => {
-    const information = response.data.articles.javascript
-    information.forEach(item =>
-      appendSpot.appendChild(Card(item))
+    const information = [response.data.articles.bootstrap, response.data.articles.javascript, response.data.articles.jquery, response.data.articles.node, response.data.articles.technology];
+    // information.unshift(response.data.articles)
+    const data = information.map(item => {
+      return item.forEach(element => {
+        appendSpot.appendChild(Card(element))
+      })
+    })
+
+  })
     // console.log(response.data.articles.javascript)
     // appendSpot.appendChild(Card(response.data.articles))
-    )
-  })
   .catch(error =>
     console.log('error'))
 }
